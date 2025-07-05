@@ -18,7 +18,7 @@
           <td>{{ music.name }}</td>
           <td>{{ music.music }}</td>
           <td>
-            <button @click="deleteMusic(index)" class="delete-Task">&times;</button>
+            <button @click="deleteMusic(index)" class="delete-Task" :disabled="isDisabled">&times;</button>
           </td>
         </tr>
 
@@ -111,7 +111,7 @@ import Musica from '../services/musica'
     
    }
 
-   button.delete-task {
+   button.delete-Task {
     background-color: #ef4444;
     color: #ccc;
     border: none;

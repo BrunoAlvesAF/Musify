@@ -1,4 +1,5 @@
 <template>
+
  <div class="form-container">
    <div v-if="successMessage" class="toast-success">{{ successMessage }}</div>
    <h1>Madureira Music</h1>
@@ -20,6 +21,7 @@
  
  </form>
  </div>
+ 
 </template>
 
 <script>
@@ -68,20 +70,20 @@ export default {
 </script>
 
 <style scoped lang="css">
+
  .form-container {
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   background-image: linear-gradient(to bottom, black, blue);
+   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.774), rgb(8, 8, 129));
    padding: 20px;
-   border-radius: 8px;
+   border-radius: 8px;   
    box-shadow: 0 4px 8px rgba(32, 22, 22, 0.3);
-   min-height: 100vh;
-   width: 100%;
-   padding: 1rem;
+   max-height: 600px;
+   width: 90%;
+   padding: 20px;
    text-align: center;
-   
  }
 
  .form-container input::placeholder{
@@ -112,6 +114,7 @@ export default {
    border: none;
    background-color: rgba(255, 255, 255, 0.2);
    color: white; 
+   font-size: 16px;
 }
 
  .form-container button{
@@ -152,7 +155,7 @@ export default {
    right: 20px;
    background-color: #4caf50;
    color: white;
-   padding: 12px 20px;
+   padding: 20px 20px;
    border-radius: 5px;
  }
 </style>

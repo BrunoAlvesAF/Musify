@@ -17,9 +17,9 @@
 </script>
 
 <style scoped="css">
- /*testando
+/*
  nav {
   display: none;
  }
- */
+*/
  </style>
