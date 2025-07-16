@@ -1,16 +1,16 @@
 <template>
-
+  
  <div class="form-container">
-   <div v-if="successMessage" class="toast-success">{{ successMessage }}</div>
-   <h1>Madureira Music</h1>
+   <h1>AD Musify</h1>
 
    <form @submit.prevent="submitForm">
+
  <div>
    <label for="name" class="block text-sm">Nome</label>
    <input type="text" id="name" v-model="name" placeholder="seu nome" required>
  </div>
- <div>
 
+ <div>
    <label for="music" class="block text-sm">Música</label>
    <input type="text" id="music" v-model="music" placeholder="nome da música" required>
  </div>
@@ -21,6 +21,7 @@
  
  </form>
  </div>
+ 
  
 </template>
 
@@ -38,52 +39,61 @@ export default {
     };
   },
   methods: {
-    async submitForm() {
-      if (!this.name.trim() || !this.music.trim() || this.isSubmitting) return;
+   async submitForm() {
+  if (!this.name.trim() || !this.music.trim() || this.isSubmitting) return;
 
-      this.isSubmitting = true;
+  this.isSubmitting = true;
 
-      try {
-        await Musica.criar({
-          name: this.name.trim(),
-          music: this.music.trim(),
-        });
+  try {
+    const nome = this.name.trim();
+    const musica = this.music.trim();
 
-        this.successMessage = 'Enviado com sucesso!';
-        this.name = '';
-        this.music = '';
+    await Musica.criar({
+      name: nome,
+      music: musica,
+    });
 
-        this.$emit('music-added');
+    this.$emit('music-added');
 
-      } catch (error) {
-        console.error('Erro ao enviar:', error);
-        this.successMessage = 'Erro ao enviar música.';
-      } finally {
-        setTimeout(() => {
-          this.successMessage = '';
-          this.isSubmitting = false;
-        }, 3000);
-      }
-    },
+    const mensagem = `Paz do Senhor!\nNome: ${nome}\nMúsica: ${musica}`;
+
+    // Apaga os campo após o envio
+    this.name = '';
+    this.music = '';
+
+    const numeroWhatsapp = '5588993085560';
+    const link = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+    window.location.href = link;
+
+  } catch (error) {
+    console.error('Erro ao enviar:', error);
+    this.successMessage = 'Erro ao enviar música.';
+  } finally {
+    this.isSubmitting = false;
+  }
+},
   },
 };
 </script>
 
-<style scoped lang="css">
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
  .form-container {
-   display: flex;
+  display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: column;
    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.774), rgb(8, 8, 129));
-   padding: 20px;
-   border-radius: 8px;   
+   border-radius: 10px;   
    box-shadow: 0 4px 8px rgba(32, 22, 22, 0.3);
-   max-height: 600px;
-   width: 90%;
-   padding: 20px;
-   text-align: center;
+   min-height: 100vh;
+  text-align: center;
  }
 
  .form-container input::placeholder{
@@ -143,9 +153,6 @@ export default {
 
  button:disabled {
   cursor: not-allowed;
- }
-
- .btn-disabled {
   background-color: #9ca3af;
  }
 
