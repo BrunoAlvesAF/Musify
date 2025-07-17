@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import Musica from '../services/musica';
+
 export default {
   data() {
     return {
@@ -83,7 +85,7 @@ export default {
 
       } catch (error) {
         console.error('Erro ao enviar:', error);
-        this.$toast.error('Erro ao enviar música. Por favor, tente novamente.');
+        alert('Erro ao enviar música. Por favor, tente novamente.');
       } finally {
         this.isSubmitting = false;
       }
