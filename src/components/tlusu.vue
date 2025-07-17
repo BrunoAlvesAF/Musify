@@ -44,14 +44,14 @@
       
       <div class="footer">
         <p>&copy; 2025 AD Musify. Todos os direitos reservados.</p>
-        <p class="developer">Desenvolvido por Bruno Alvez</p>
+        <p class="developer">Desenvolvido por Bruno Alves</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Musica from '../services/musica';
+
 
 export default {
   data() {
@@ -71,7 +71,7 @@ export default {
         const nome = this.name.trim();
         const musica = this.music.trim();
 
-        await Musica.criar({ name: nome, music: musica });
+        //await Musica.criar({ name: nome, music: musica });
 
         this.$emit('music-added');
 
