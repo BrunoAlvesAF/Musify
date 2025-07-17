@@ -103,7 +103,7 @@
       
       <div class="footer">
         <p>&copy; {{ currentYear }} AD Musify. Todos os direitos reservados.</p>
-        <p class="developer">Desenvolvido por Bruno Alvez</p>
+        <p class="developer">Desenvolvido por Bruno Alves</p>
       </div>
     </div>
 
